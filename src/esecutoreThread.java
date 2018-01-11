@@ -6,6 +6,7 @@ public class esecutoreThread extends Thread {
     private int [][] B;
     private int [][] C;
     
+    //costruttore
     public esecutoreThread(int dimMatrice, int riga, int colonna, int[][] A, int[][] B, int[][] C) {
     	this.dimMatrice = dimMatrice;
     	this.riga = riga;

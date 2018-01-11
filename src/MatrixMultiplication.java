@@ -4,9 +4,9 @@ public class MatrixMultiplication {
     
     //definisco la matrice A
     public static int A[][] = {
-    		{1, 2, -2},
-    		{-3, 4, 7}, 
-    		{ 6, 0, 3}
+    		{-1, 5, 5},
+    		{-4, 9, 6}, 
+    		{6, -8, 3}
     };
 	//definisco la matrice B
     public static int B[][] = {
@@ -19,13 +19,19 @@ public class MatrixMultiplication {
     //matrice di threads
     public static esecutoreThread [][] Threads = new esecutoreThread[N][N];
     
-    public static void main(String[] args) {      
+    public static void main(String[] args) throws InterruptedException {      
         
         //creo N^2 threads dove in ognuno di essi calcolo un elemento della matrice finale
-    	for (int i = 0; i<N; i++){
-            for (int j=0; j<N; j++){
+    	for(int i = 0; i<N; i++){
+            for(int j=0; j<N; j++){
                 Threads[i][j] = new esecutoreThread(N, i, j, A, B, C);
                 Threads[i][j].start();
+            }
+        }
+    	
+    	for(int i = 0; i<N; i++){
+            for(int j=0; j<N; j++){
+                Threads[i][j].join();
             }
         }
         
